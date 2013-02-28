@@ -12,7 +12,6 @@ CACHE_BACKEND = 'locmem://' #drop-dead simple cacheing
 # Additional apps (usually local development helpers)
 INSTALLED_APPS += (
     'django_extensions',
-    'debug_toolbar',
 )
 
 DATABASES = {

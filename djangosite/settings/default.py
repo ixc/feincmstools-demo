@@ -67,13 +67,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 
     'south',
-    'easy_thumbnails',
-    'compressor',
 
     'generic',
     'markitup',
-
-    'debug_toolbar',
 
     'oembed',
 
@@ -83,8 +79,6 @@ INSTALLED_APPS = (
     'feincms.module.medialibrary',
     'feincmstools',
     'adminboost',
-#    'oembed',
-    'singleton_models',
 
     'djangosite.meetups',
     'djangosite.magazine',
@@ -107,8 +101,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'generic.context_processors.generic',
-    'djangosite.context_processors.site_section',
-    'flatblocks.context_processors.flatblocks',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -127,7 +119,6 @@ MIDDLEWARE_CLASSES = (
     # 'generic.middleware.ProfileMiddleware',
     # Uncomment the next line to turn on site-wide cacheing
     # 'django.middleware.cache.FetchFromCacheMiddleware',
-#    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -184,23 +175,6 @@ ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'djangosite.settings.admin.dashboard.CustomApp
 ADMIN_TOOLS_MENU = 'djangosite.settings.admin.menu.CustomMenu'
 #ADMIN_TOOLS_THEMING_CSS = 'ixc-admin/theming.css'
 
-# Debug Toolbar -----------------------
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-    'debug_toolbar.panels.headers.HeaderDebugPanel',
-    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-    'debug_toolbar.panels.template.TemplateDebugPanel',
-    'debug_toolbar.panels.sql.SQLDebugPanel',
-    'debug_toolbar.panels.cache.CacheDebugPanel',
-    'debug_toolbar.panels.logger.LoggingPanel',
-)
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False
-}
-
-INTERNAL_IPS = ('127.0.0.1',) # Add your ip to this (for the debug toolbar)
-
 # FeinCMS -----------------------------
 FEINCMS_JQUERY_NO_CONFLICT = True
 FEINCMS_TREE_EDITOR_INCLUDE_ANCESTORS = True
@@ -244,7 +218,6 @@ TEMPLATE_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 )
 
 ADMINS = (
@@ -290,16 +263,3 @@ LOGIN_REDIRECT_URL = '/' # Django default: '/accounts/profile/'
 
 # Put all the thumbnails in a thumbs/ folder
 THUMBNAIL_BASEDIR = "thumbs"
-
-# Django-compressor
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', os.path.join(os.getenv("VIRTUAL_ENV"), "bin", "pyscss") + " --load-path={inpath} {infile}"),
-)
-COMPRESS_ROOT = STATIC_ROOT
-COMPRESS_URL = STATIC_URL
-
-# Flatblocks
-# If set to True, this causes a Get or Create behaviour when retrieving flatblocks.
-FLATBLOCKS_AUTOCREATE_STATIC_BLOCKS = True
-FLATBLOCKS_STRICT_DEFAULT_CHECK = True
-FLATBLOCKS_STRICT_DEFAULT_CHECK_UPDATE = True

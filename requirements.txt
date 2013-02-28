@@ -16,39 +16,20 @@ south==0.7.5
 # Postgres databases
 psycopg2==2.4.1  # 2.4.2 has compatibility issues with Django 1.3
 
-# Images handling
 PIL==1.1.7
-easy_thumbnails==1.0.1
-
-# SASS - Syntactically Awesome Stylesheets
-pyscss==1.1.3
-#ic fork adds {inpath} which is necessary to get pyscss + staticfiles working
--e git+https://github.com/ixc/django_compressor.git@30df20a4#egg=django_compressor
-
-# Gunicorn - For Deployment
-gunicorn==0.14.3
-
 #Stuff we use all the time
 -e git+https://bitbucket.org/cogat/django-generic.git@eb5f16f1dd2546671b9d0dd58ed20c30224eb1e1#egg=django-generic
 django-extensions==0.9
--e git+https://github.com/ixc/django-singletons.git@7800c7942bb0ec01619b7e242b61d3349897b9f6#egg=django-singletons
 
 ## FRONTEND ##
 
-# Nicer Django admin
-# Using trunk due to staticfiles support, upgrade to 0.5.0 when it's out
--e hg+https://bitbucket.org/izi/django-admin-tools@3a53289d5af2#egg=admin-tools
-
 # CMS Framework
 django-mptt==0.4.2
+
 # 2013-01-09: ixc fork has the ensure_completely_loaded(force=True) patch; change back to feincms when pull request accepted.
 -e git://github.com/ixc/feincms.git@a51670d8d4420265eebbc3b50ea4f14ac1ae0b5e#egg=feincms
 -e git://github.com/ixc/glamkit-feincmstools.git@9e57e5c91f2c35e4629e0f9ade177426a0c5ff28#egg=glamkit-feincmstools
 -e git://github.com/ixc/glamkit-adminboost.git@9d74c11#egg=glamkit-adminboost
-
--e git://github.com/ixc/django-flatblocks.git@bfab84c99171b79d9796f5631681656331cae135#egg=django-flatblocks
--e git://github.com/ixc/glamkit-smartlinks.git@d0ce74c#egg=smartlinks
--e git://github.com/ixc/glamkit-blogtools.git@1e51f1d#egg=blogtools
 
 # WYSIWYM - textile
 textile==2.1.5
@@ -60,21 +41,11 @@ pytz==2012g
 # Oembed
 -e git://github.com/ixc/django-oembed.git@2741c81#egg=django-oembed
 
-# Transfers media from a URL if it's not in the MEDIA folder.
-glamkit-fallbackserve
+# Local development tools --------------
 
-# A Django test runner based on unittest2's test discovery.
-django-discover-runner==0.2.2
+# in-browser debugging with runserver_plus
+Werkzeug
 
-# Hudson complains if we don't have these
-unittest2==0.5.1
-Jinja2==2.6
-mock==0.8.0
-
-#guardian 1.0.4 (latest as of now) has bad MD5 hash
-django-guardian==1.0.3
-django-userena==1.1.2
-
-# Toolbar for debug info
-django-debug-toolbar==0.9.4
-
+# Versions to minimise OS X ipython behaviour
+-f http://ipython.scipy.org/dist/ readline
+ipython==0.10

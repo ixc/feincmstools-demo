@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls import *
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import urls as auth_urls
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -17,7 +18,6 @@ urlpatterns = patterns('',
 #    To add a blog, uncomment this line, and the two related apps in INSTALLED_APPS.
 #    url(r'^blog/', include('djangosite.blog.urls', app_name='blogtools', namespace='blog')),
     url(r'^admin/', include('adminboost.urls')),
-    url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^accounts/', include(auth_urls)),
     url(r'^markitup/', include('markitup.urls')), #preview view
     url(r'meetups/', include('djangosite.meetups.urls', namespace="meetups")),
@@ -28,10 +28,7 @@ urlpatterns = patterns('',
 # Media/static file serving; only for local development use
 if settings.DEBUG:
     # Use glamkit-fallbackserve, to look in a URL for missing media files
-    import fallbackserve
-    media_pattern = url(r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip("/"),
-        'fallbackserve.views.serve', {'document_root': settings.MEDIA_ROOT})
-    urlpatterns += patterns('', media_pattern) + staticfiles_urlpatterns()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + staticfiles_urlpatterns()
 
 
 """
