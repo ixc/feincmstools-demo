@@ -1,2 +1,15 @@
-<h1>{{ meetup.title }}</h1>
-<p>{{ meetup.date|date }}</p>
+{% load feincms_tags %}
+<html>
+	<body>
+		<h1>{{ meetup.title }}</h1>
+		<p>{{ meetup.date|date }}</p>
+
+		<div class="main" style="float:left">
+			{% feincms_render_region meetup "main" request %}
+		</div>
+
+		<div class="sidebar" style="float:right">
+			{% feincms_render_region meetup "left" request %}
+		</div>
+	</body>
+</html>
