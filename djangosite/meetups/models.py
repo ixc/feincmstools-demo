@@ -22,10 +22,15 @@ class Meetup(FeinCMSDocument):
 
     @classmethod
     def content_types_by_region(cls, region):
+        if region == 'left':
+            return [
+                (None, (Text,)),
+                ('Advanced', (RawHTMLContent,)),
+            ]
 
         # MediaFileContent is a built-in FeinCMS content type
         # hence the unwieldy initialisation.
-        mfc = (MediaFileContent, dict(
+        media_files = (MediaFileContent, dict(
                 TYPE_CHOICES=(
                     ('default', 'default'),
                     ('lightbox', 'lightbox'),
@@ -34,6 +39,6 @@ class Meetup(FeinCMSDocument):
 
         return [
             (None, (Text,)),
-            ('Media', ( mfc, OEmbedContent)),
+            ('Media', ( media_files, OEmbedContent)),
             ('Advanced', (RawHTMLContent,)),
         ]
