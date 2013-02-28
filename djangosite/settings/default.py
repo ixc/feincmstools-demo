@@ -75,8 +75,11 @@ INSTALLED_APPS = (
 
     'debug_toolbar',
 
+    'oembed',
+
     'mptt',
     'feincms',
+    'feincms.module.medialibrary',
     'feincmstools',
     'adminboost',
 #    'oembed',

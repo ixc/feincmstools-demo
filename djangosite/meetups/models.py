@@ -1,6 +1,7 @@
 from django.db import models
+from feincms.content.medialibrary.v2 import MediaFileContent
 from feincmstools.base import FeinCMSDocument
-from .content_types import Text
+from .content_types import Text, OEmbedContent, RawHTMLContent
 
 class Meetup(FeinCMSDocument):
     date = models.DateField()
@@ -21,6 +22,18 @@ class Meetup(FeinCMSDocument):
 
     @classmethod
     def content_types_by_region(cls, region):
+
+        # MediaFileContent is a built-in FeinCMS content type
+        # hence the unwieldy initialisation.
+        mfc = (MediaFileContent, dict(
+                TYPE_CHOICES=(
+                    ('default', 'default'),
+                    ('lightbox', 'lightbox'),
+                )
+        ))
+
         return [
             (None, (Text,)),
+            ('Media', ( mfc, OEmbedContent)),
+            ('Advanced', (RawHTMLContent,)),
         ]
