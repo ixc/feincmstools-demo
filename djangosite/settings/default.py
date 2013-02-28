@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'singleton_models',
 
     'djangosite.meetups',
+    'djangosite.magazine',
 
 )
 

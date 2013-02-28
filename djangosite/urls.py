@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include(auth_urls)),
     url(r'^markitup/', include('markitup.urls')), #preview view
     url(r'meetups/', include('djangosite.meetups.urls', namespace="meetups")),
+    url(r'magazine/', include('djangosite.magazine.urls', namespace="magazine")),
 #    url(r'^accounts/', include('userena.urls')),
 )
 

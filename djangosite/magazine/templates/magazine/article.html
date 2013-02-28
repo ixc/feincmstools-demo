@@ -1,0 +1,33 @@
+{% load feincms_tags generic_tags %}
+<html>
+	<body>
+		<h1>{{ article.title }}</h1>
+		{% if article.parent %}
+			<p>{{ article.parent|linkify }}</p>
+		{% endif %}
+
+		<div class="main" style="float:left">
+			{% feincms_render_region article "main" request %}
+		</div>
+
+		{% with article.get_children as children %}
+			{% if children %}
+				<h2>Furthermore:</h2>
+				<ul>
+					{% for child in children %}
+						<li>{{ child|linkify }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+		{% if article.content.related %}
+			<div style="float:right">
+				<h2>Related articles</h2>
+				<ul class="sidebar" style="float:right">
+					{% feincms_render_region article "related" request %}
+				</ul>
+			</div>
+		{% endif %}
+	</body>
+</html>
