@@ -1,6 +1,7 @@
 {% load feincms_tags generic_tags %}
 <html>
 	<body>
+		<p>SyDjango magazine</p>
 		<h1>{{ article.title }}</h1>
 		{% if article.parent %}
 			<p>{{ article.parent|linkify }}</p>

@@ -17,10 +17,31 @@ class Article(HierarchicalFeinCMSDocument, HierarchicalSlugField):
     def get_absolute_url(self):
         return 'magazine:article', [self.slug]
 
-    feincms_regions = (
-        ('main', "Main"),
-        ('related', "Related articles"),
-    )
+    feincms_templates = [
+        {
+            'key': 'base',
+            'title': 'Standard template',
+            'path': 'magazine/article.html',
+            'regions': (
+                ('main', 'Main content area'),
+                ('related', 'Related articles', 'inherited'),
+            ),
+        }, {
+            'key': 'issue',
+            'title': 'Issue template',
+            'path': 'magazine/issue.html',
+            'regions': (), #no content.
+        }, {
+            'key': '2col',
+            'title': 'Template with two columns',
+            'path': 'magazine/article_2col.html',
+            'regions': (
+                ('col1', 'Column one'),
+                ('col2', 'Column two'),
+                ('related', 'Related articles', 'inherited'),
+            ),
+        }
+    ]
 
     @classmethod
     def content_types_by_region(cls, region):

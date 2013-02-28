@@ -1,0 +1,19 @@
+{% load feincms_tags generic_tags %}
+<html>
+	<body>
+		<p>SyDjango magazine</p>
+		<h1>{{ article.title }}</h1>
+
+		{% with article.get_children as children %}
+			{% if children %}
+				<h2>In this issue:</h2>
+				<ul>
+					{% for child in children %}
+						<li>{{ child|linkify }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+	</body>
+</html>

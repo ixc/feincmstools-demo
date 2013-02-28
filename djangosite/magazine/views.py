@@ -9,4 +9,4 @@ def article(request, slug):
     article = get_object_or_404(Article, slug=slug.rstrip('/'))
     context['article'] = article
 
-    return render_to_response('magazine/article.html', context)
+    return render_to_response(article.template.path, context)
