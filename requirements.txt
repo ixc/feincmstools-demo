@@ -43,7 +43,7 @@ django-extensions==0.9
 django-mptt==0.4.2
 # 2013-01-09: ixc fork has the ensure_completely_loaded(force=True) patch; change back to feincms when pull request accepted.
 -e git://github.com/ixc/feincms.git@a51670d8d4420265eebbc3b50ea4f14ac1ae0b5e#egg=feincms
--e git://github.com/ixc/glamkit-feincmstools.git@2496f08#egg=glamkit-feincmstools
+-e git://github.com/ixc/glamkit-feincmstools.git@9e57e5c91f2c35e4629e0f9ade177426a0c5ff28#egg=glamkit-feincmstools
 -e git://github.com/ixc/glamkit-adminboost.git@9d74c11#egg=glamkit-adminboost
 
 -e git://github.com/ixc/django-flatblocks.git@bfab84c99171b79d9796f5631681656331cae135#egg=django-flatblocks
