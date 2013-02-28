@@ -78,6 +78,7 @@ INSTALLED_APPS = (
     'oembed',
 
     'mptt',
+    'djangosite.feincms_conf',
     'feincms',
     'feincms.module.medialibrary',
     'feincmstools',

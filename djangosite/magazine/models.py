@@ -1,9 +1,7 @@
-from feincms.content.medialibrary.v2 import MediaFileContent
 from feincmstools.fields import HierarchicalSlugField
 from feincmstools.base import HierarchicalFeinCMSDocument
 from django.db import models
-from .content_types import RelatedArticle
-from djangosite.meetups.content_types import Text, OEmbedContent, RawHTMLContent
+from djangosite.feincms_conf.models import default_content_types_by_region
 
 class Article(HierarchicalFeinCMSDocument, HierarchicalSlugField):
     title = models.CharField(max_length=255)
@@ -45,22 +43,5 @@ class Article(HierarchicalFeinCMSDocument, HierarchicalSlugField):
 
     @classmethod
     def content_types_by_region(cls, region):
-        if region == 'related':
-            return [
-                (None, (RelatedArticle,)),
-            ]
-
-        # MediaFileContent is a built-in FeinCMS content type
-        # hence the unwieldy initialisation.
-        media_files = (MediaFileContent, dict(
-                TYPE_CHOICES=(
-                    ('default', 'default'),
-                    ('lightbox', 'lightbox'),
-                )
-        ))
-
-        return [
-            (None, (Text,)),
-            ('Media', ( media_files, OEmbedContent)),
-            ('Advanced', (RawHTMLContent,)),
-        ]
+        # just use the default content types. You could override this as necessary.
+        return default_content_types_by_region(region)
