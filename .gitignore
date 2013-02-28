@@ -1,0 +1,27 @@
+.DS_Store
+.svn/
+*.pyc
+*~
+pip-log.txt
+*.egg-info
+src/*
+
+*.db
+djangosite/settings/local.py
+virtualenv
+venv/*
+static/*
+media/*
+
+# Aptana/pycharm/pydev stuff
+.tmp_*~
+.idea
+.project
+.pydevproject
+.settings*
+.env
+
+later/*
+
+feincms
+feincmstools

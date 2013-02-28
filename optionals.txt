@@ -1,0 +1,21 @@
+# Local development tools --------------
+
+# in-browser debugging with runserver_plus
+Werkzeug
+
+# Versions to minimise OS X ipython behaviour
+-f http://ipython.scipy.org/dist/ readline
+ipython==0.10
+
+# Deployment tools ----------------------
+
+Fabric
+-e git+git@git.assembla.com:/ixcapps.5.git@8167d185c0#egg=ixcfab
+
+# Testing tools ----------------------
+
+webtest==1.4.3
+django-webtest==1.5.4
+BeautifulSoup==3.2.1
+
+glamkit-testtools==0.1
